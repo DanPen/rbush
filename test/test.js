@@ -357,7 +357,9 @@ t('#remove accepts an equals function', (t) => {
     const item = {minX: 20, minY: 70, maxX: 20, maxY: 70, foo: 'bar'};
 
     tree.insert(item);
-    tree.remove(JSON.parse(JSON.stringify(item)), (a, b) => a.foo === b.foo);
+    tree.remove({
+        foo: 'bar'
+    }, (a, b) => a.foo === b.foo);
 
     sortedEqual(t, tree.all(), data);
     t.end();
